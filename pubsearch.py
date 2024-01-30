@@ -12,8 +12,9 @@ df = pd.read_excel(file_path)
 
 # Assuming the column containing author names is named 'Authors'
 PI = df['PIs'].tolist()
+Affiliation = df['Affiliation'].tolist()
 print(f"Total number of PIs: {str(len(PI))}")
-print(f"Estimated Time: {str((len(PI)*(2.0))/3600)} h")
+print(f"Estimated Time: {str((len(PI)*(2.0))/60)} minutes")
 
 # publication saving list
 publications_data = []
@@ -21,7 +22,7 @@ publications_data = []
 programstarttime = time.time()
 totpub = 0
 n=0
-for authorname in PI: #repeat for all PIs
+for i, authorname in enumerate(PI): #repeat for all PIs
     pubdata = []
     n+=1
     retries = 0
@@ -40,8 +41,9 @@ for authorname in PI: #repeat for all PIs
                 max = range(len(author.publications))
                 print(n ,authorname, len(author.publications))
                 totpub += len(author.publications)
-                df = pd.DataFrame(author.publications)
-                publications_data.append(df)
+                df2 = pd.DataFrame(author.publications)
+                df2['Affiliation'] = Affiliation[i]
+                publications_data.append(df2)
                 break
             else:
                 break
@@ -58,5 +60,5 @@ combined_df_vertical = pd.concat(publications_data, axis=0)
 combined_df_vertical.to_excel(f'publications.xlsx', index=False)
 programendtime = time.time() - programstarttime
 print('Searching Finished!')
-print('Total '+str(programendtime/3600)+'h spent')
+print('Total '+str(programendtime/60)+'minutes spent')
 print('Total '+str(totpub)+' publications')

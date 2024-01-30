@@ -2,7 +2,7 @@ import pandas as pd
 from collections import Counter
 
 # 파일 불러오기
-file_path = 'DBLPpub_post_processed.xlsx'
+file_path = 'DBLPpub_post_processed_MIRMI.xlsx'
 sheet_name = 'database'
 data = pd.read_excel(file_path, sheet_name=sheet_name)
 
@@ -11,19 +11,10 @@ year_range = range(2019, 2024)
 target_journals = [#IMPORTANT: Every Publication titles that needed to be check should be in this list!
     'ICRA', 'IROS', 'IEEE Robotics Autom. Lett.', 'IEEE Trans. Robotics',
     'Int. J. Robotics Res.', 'Sci. Robotics', 'Robotics: Science and Systems',
-    'CoRL', 'RO-MAN', 'CDC', 'ACC', 'ECC', 'IEEE Control. Syst. Lett.',
-    'IEEE Trans. Autom. Control.', 'CVPR', 'NeurIPS'
+    'CoRL', 'RO-MAN', 'Humanoids', 'ISRR'
 ]
 
-university_list = [#IMPORTANT: Every Institutions that needed to be check should be in this list!
-    'BHT Berlin', 'Constructor Uni Bremen', 'DFKI', 'DLR', 'FAU Erlangen', 'Fraunhofer',
-    'FU Berlin', 'HU Berlin', 'KIT', 'LMU', 'LU Hannover', 'MPI', 'RWTH Aachen', 'TU Berlin',
-    'TU Braunschweig', 'TU Chemnitz', 'TU Darmstadt', 'TU Dortmund', 'TU Dresden', 'TU Ilmenau',
-    'TU Kaiserslautern', 'TUM', 'Uni Augsburg', 'Uni Bamberg', 'Uni Bayreuth', 'Uni Bielefeld',
-    'Uni Bonn', 'Uni Bremen', 'Uni Freiburg', 'Uni Hamburg', 'Uni Heidelberg', 'Uni Magdeburg',
-    'Uni Stuttgart', 'Uni Tübingen', 'UTN'
-]
-
+university_list = ['TUM']
 
 # 특정 조건에 맞는 행 선택
 selected_rows = data[
