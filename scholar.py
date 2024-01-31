@@ -28,7 +28,7 @@ for author_name in PI:
             venue = pub['bib'].get('citation', 'N/A')
             name = author_info['name']
             # Gathering publication details for each author
-            if re.search(r'\bNature\b', venue) and not re.search(r'\bSpringer\b', venue) and not re.search(r'\bDiscrete\b', venue):
+            if re.search(r'\bNature\b', venue) and not re.search(r'\bSpringer\b', venue) and not re.search(r'\bDiscrete\b', venue): #To search only Nature related papers
                 pub_info.append({'Title': title, 'Author': name, 'Year': year, 'Venue': venue})
         n += 1
     except StopIteration as e:
