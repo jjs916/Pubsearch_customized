@@ -1,14 +1,18 @@
 # Robotics Publication Searching.
-## DBLP version.
 
 !CAUTION!
-DBLP does not shows every publications.
+DBLP and Google Scholar does not shows every publications.
 It only shows CS related publications.
 - - -
-How to make database
-1. Run 'pubsearch.py'
-2. Copy the raw data in 'publications.xlsx'.
-3. Paste the raw data to 'DBLPpub_post_processed.xlsx'
+For German Database
+1. Write PI names and affiliations into 'PIlist.xlsx' 
+2. Run 'pubsearch.py'
+3. Copy the raw data 'publications.xlsx' to 'DBLPpub_post_processed.xlsx/database'.
+4. Copy PI infos to 'DBLPpub_post_processed.xlsx/Affiliation', and sort AtoZ (!IMPORTANT!).
+5. Run 'duplication.py'
+6. Copy the data of 'duplication.xlsx' to 'DBLPpub_post_processed.xlsx/Duplication check'.
+7. Refresh 'DBLPpub_post_processed.xlsx/PI Summary' (Drag A5~U5 and copy-drag the functions enough until every PIs listed)
+8. 
 - - -
 How to use 'DBLPpub_post_processed.xlsx'<br/>
 1. Read Readme in Excel file
