@@ -8,10 +8,10 @@ data = pd.read_excel(file_path, sheet_name=sheet_name)
 
 # 연도 범위와 특정 학술지들의 목록 설정
 year_range = range(2019, 2024)
-target_journals = [#IMPORTANT: Every Publication titles that needed to be check should be in this list!
-    'ICRA', 'IROS', 'IEEE Robotics Autom. Lett.', 'IEEE Trans. Robotics',
-    'Int. J. Robotics Res.', 'Sci. Robotics', 'Robotics: Science and Systems',
-    'CoRL', 'RO-MAN', 'Humanoids', 'ISRR'
+target_journals = [
+    'ICRA', 'IROS', 'Robotics: Science and Systems',
+    'CoRL', 'RO-MAN', 'Humanoids', 'ISRR', 'IEEE Robotics Autom. Lett.', 'IEEE Trans. Robotics',
+    'Int. J. Robotics Res.', 'Sci. Robotics', 'Nature'
 ]
 
 university_list = ['TUM']
@@ -19,14 +19,12 @@ university_list = ['TUM']
 # 특정 조건에 맞는 행 선택
 selected_rows = data[
     (data.iloc[:, 1].isin(year_range)) &
-    (data.iloc[:, 2].isin(target_journals))
+    (data.iloc[:, 2].str.contains('|'.join(target_journals)))
 ]
 
 # 중복된 행 찾기
 duplicated_indices = selected_rows[selected_rows.duplicated(subset=selected_rows.columns[3], keep=False)].index
 duplicated_rows = selected_rows.loc[duplicated_indices].sort_values(by=selected_rows.columns[3])
-
-# print(selected_rows.duplicated(subset=selected_rows.columns[3], keep=False))
 
 # 중복된 행의 4번째 열 값이 같은 행들끼리 그룹화하여 처리
 grouped = duplicated_rows.groupby(duplicated_rows.columns[3])
@@ -47,7 +45,10 @@ for name, frequencies in result.items():
         third_column_values = group_with_university.iloc[:, 2].unique()
         if count >= 2 and university in university_list:
             for third_value in third_column_values:
-                university_journal_table.loc[university, third_value] += (count-1)
+                # 수정된 부분: 각 target_journal에 대해 부분 일치 여부 확인
+                for target_journal in target_journals:
+                    if target_journal in third_value:
+                        university_journal_table.loc[university, target_journal] += (count-1)
 
 output_file_path = 'duplication.xlsx'
 university_journal_table.to_excel(output_file_path)
