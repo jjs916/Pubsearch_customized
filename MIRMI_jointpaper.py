@@ -11,7 +11,7 @@ year_range = range(2019, 2024)
 target_journals = [
     'ICRA', 'IROS', 'Robotics: Science and Systems',
     'CoRL', 'RO-MAN', 'Humanoids', 'ISRR', 'IEEE Robotics Autom. Lett.', 'IEEE Trans. Robotics',
-    'Int. J. Robotics Res.', 'Sci. Robotics', 'Nature'
+    'Int. J. Robotics Res.', 'Science', 'Nature'
 ]
 
 university_list = ['TUM']

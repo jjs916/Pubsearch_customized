@@ -1,5 +1,4 @@
 from scholarly import scholarly
-import csv
 import pandas as pd
 import re
 
@@ -12,6 +11,24 @@ PI = df['PIs'].tolist()
 pub_details = {}
 n = 0
 name = ''
+
+nature_keywords = [
+    'Nature communications',
+    'Nature Machine Intelligence',
+    'Nature Biomedical Engineering',
+    'Nature Neuroscience',
+    'Nature Biomedical Engineering',
+]
+
+keywords_alter = [
+    'Scientific Reports',#Nature
+    'Scientific data',#Nature
+    'Communications Engineering',#Nature
+    'Microsystems & Nanoengineering',#Nature
+    'npj Robotics',#Nature
+    'npj Science of Learning',#Nature
+    'Cyborg and Bionic Systems'#Science
+]
 
 for author_name in PI:
     try:
@@ -28,9 +45,17 @@ for author_name in PI:
             venue = pub['bib'].get('citation', 'N/A')
             name = author_info['name']
             # Gathering publication details for each author
-            if re.search(r'\bNature\b', venue) and not re.search(r'\bSpringer\b', venue) and not re.search(r'\bDiscrete\b', venue): #To search only Nature related papers
-                pub_info.append({'Title': title, 'Author': name, 'Year': year, 'Venue': venue})
+            #r'\bNature\s*\d+\b'
+            if re.search(r'\bNature\b', venue) and not re.search(r'\bSpringer\b', venue) and not re.search(r'\bDiscrete\b', venue): #To search only Nature related papers 
+                if any(re.search(fr'\b{keyword}\b', venue, re.IGNORECASE) for keyword in nature_keywords):
+                    pub_info.append({'Author': name, 'Year': year, 'Venue': venue, 'Title': title, 'Affiliation' : 'TUM'})
+            if any(re.search(fr'\b{keyword}\b', venue, re.IGNORECASE) for keyword in keywords_alter):
+                pub_info.append({'Author': name, 'Year': year, 'Venue': venue, 'Title': title, 'Affiliation' : 'TUM'})
+            if re.search(r'\bNature\s*\d+\b', venue):
+                pub_info.append({'Author': name, 'Year': year, 'Venue': venue, 'Title': title, 'Affiliation' : 'TUM'})
+            # if re.search(r'\bNature\b', venue) and not re.search(r'\bSpringer\b', venue) and not re.search(r'\bDiscrete\b', venue): #To search only Nature related papers
         n += 1
+        pub_details[author_name] = pub_info
     except StopIteration as e:
         # print(f"{PI[n]} not found on Google Scholar.")
         print(e)
@@ -39,18 +64,41 @@ for author_name in PI:
 
     # Assigning the publication details to the corresponding author
     print(author_name)
-    pub_details[author_name] = pub_info
 
-# Writing publication details for each author to a CSV file
-file_name = 'MIRMI_full_paperlist.csv'
+# Creating a DataFrame from the gathered publication details
+all_pub_details = []
 
-with open(file_name, mode='w', newline='', encoding='utf-8') as file:
-    writer = csv.writer(file)
-    writer.writerow(['Publication Title', 'Author', 'Publication Year', 'Venue', 'bib'])
+for author_name, pub_info in pub_details.items():
+    all_pub_details.extend(pub_info)
 
-    # Writing publication details separated by author name to the CSV file
-    for author, details in pub_details.items():
-        for pub in details:
-            writer.writerow([pub['Title'], pub['Author'], pub['Year'], pub['Venue']])
+df_pub_details = pd.DataFrame(all_pub_details)
 
-print(f"Publication details separated by author names have been written to '{file_name}' successfully.")
+# Save the DataFrame to an Excel file
+output_file_path = './publication_details.xlsx'  # Replace with your desired output file path
+df_pub_details.to_excel(output_file_path, index=False)
+
+print(f"Publication details saved to {output_file_path}")
+# Writing publication details for each author to an xlsx file
+# file_name = 'MIRMI_full_paperlist.xlsx'
+
+# with pd.ExcelWriter(file_name, engine='xlsxwriter') as writer:
+#     for author, details in pub_details.items():
+#         df = pd.DataFrame(details)
+#         # Adding 'TUM' column with constant value 'TUM'
+#         df['Affiliation'] = 'TUM'
+#         df.to_excel(writer, sheet_name=author, index=False)
+
+# print(f"Publication details separated by author names have been written to '{file_name}' successfully.")
+# # Writing publication details for each author to a CSV file
+# file_name = 'MIRMI_full_paperlist.csv'
+
+# with open(file_name, mode='w', newline='', encoding='utf-8') as file:
+#     writer = csv.writer(file)
+#     writer.writerow(['Publication Title', 'Author', 'Publication Year', 'Venue', 'Affiliation'])
+
+#     # Writing publication details separated by author name to the CSV file
+#     for author, details in pub_details.items():
+#         for pub in details:
+#             writer.writerow([pub['Title'], pub['Author'], pub['Year'], pub['Venue'], 'TUM'])
+
+# print(f"Publication details separated by author names have been written to '{file_name}' successfully.")
