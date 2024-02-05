@@ -18,7 +18,7 @@ For MIRMI Database
 1. Write PI names and affiliations into 'PIlist_MIRMI.xlsx'
 2. Run 'mirmi.py'
 3. Copy the raw data 'publications.xlsx' to 'DBLPpub_post_processed_MIRMI.xlsx/database'.
-4. Run 'scholar.py' (this is only for Nature & Science papers)
+4. Run 'scholar.py' (this is only for Nature & Science papers) *Sience Robotics is crawled by 'mirmi.py'
 5. Copy the raw data 'publication_details.xlsx' to 'DBLPpub_post_processed_MIRMI.xlsx/database'.
 6. Copy PI infos to 'DBLPpub_post_processed.xlsx/Affiliation'
 7. Run 'MIRMI_jointpaper.py'
