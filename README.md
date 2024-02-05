@@ -18,8 +18,8 @@ For MIRMI Database
 1. Write PI names and affiliations into 'PIlist_MIRMI.xlsx'
 2. Run 'mirmi.py'
 3. Copy the raw data 'publications.xlsx' to 'DBLPpub_post_processed_MIRMI.xlsx/database'.
-4. Run 'scholar.py' (this is only for Nature papers)
-5. Copy the raw data 'MIRMI_full_paperlist.csv' to 'DBLPpub_post_processed_MIRMI.xlsx/database'.
+4. Run 'scholar.py' (this is only for Nature & Science papers)
+5. Copy the raw data 'publication_details.xlsx' to 'DBLPpub_post_processed_MIRMI.xlsx/database'.
 6. Copy PI infos to 'DBLPpub_post_processed.xlsx/Affiliation'
 7. Run 'MIRMI_jointpaper.py'
 8. Copy the data of 'duplication.xlsx' to 'DBLPpub_post_processed_MIRMI.xlsx/Joint publications'.
