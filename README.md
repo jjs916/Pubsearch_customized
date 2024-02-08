@@ -1,4 +1,7 @@
 # Robotics Publication Searching.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+dblpAPI is modified for the fast and reliable crawling.
+Please use the library within this project. Not online installed dblpAPI library.
 
 !CAUTION!
 DBLP and Google Scholar does not shows every publications.
