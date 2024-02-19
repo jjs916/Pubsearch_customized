@@ -27,3 +27,7 @@ For MIRMI Database
 7. Run 'MIRMI_jointpaper.py'
 8. Copy the data of 'duplication.xlsx' to 'DBLPpub_post_processed_MIRMI.xlsx/Joint publications'.
 9. Refresh 'DBLPpub_post_processed_MIRMI.xlsx/PI Summary' (Drag A5~O5 and copy-drag(?) the functions enough until every PIs listed + Set year range)
+---
+For pubmed:
+https://medium.com/@felipe.odorcyk/scrapping-data-from-pubmed-database-78a9b53de8ca
+under construction
