@@ -3,6 +3,11 @@
 dblpAPI is modified for the fast and reliable crawling.
 Please use the library within this project. Not online installed dblpAPI library.
 
+Install requirements
+1. pandas
+2. openpyxl
+3. xlsxwriter
+
 !CAUTION!
 DBLP and Google Scholar does not shows every publications.
 It only shows CS related publications.
