@@ -35,4 +35,6 @@ For MIRMI Database
 ---
 For pubmed:
 https://medium.com/@felipe.odorcyk/scrapping-data-from-pubmed-database-78a9b53de8ca
-under construction
+
+1. Run 'pubmed_test.py'.
+2. Copy data from 'pubmed_result.xlsx' to 'DBLPpub_post_processed_pubmedadd.xlsx/database', and sort Affiliation AtoZ (!IMPORTANT!).
