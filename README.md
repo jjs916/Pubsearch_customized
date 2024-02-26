@@ -15,7 +15,7 @@ It only shows CS related publications.
 For German Database
 1. Write PI names and affiliations into 'PIlist.xlsx' !!Because of DBLP's strange searching mechanism, some names are not properly work. Please refer 'PIsearching key.xlsx'
 3. Run 'pubsearch.py'
-4. Copy the raw data 'publications.xlsx' to 'DBLPpub_post_processed.xlsx/database'.
+4. Copy the raw data 'publications.xlsx' to 'DBLPpub_post_processed.xlsx/database', and sort name AtoZ (!IMPORTANT!).
 5. Copy PI infos to 'DBLPpub_post_processed.xlsx/Affiliation', and sort Affiliation AtoZ (!IMPORTANT!).
 6. Run 'duplication.py'
 7. Copy the data of 'duplication.xlsx' to 'DBLPpub_post_processed.xlsx/Duplication check'.
@@ -37,4 +37,4 @@ For pubmed:
 https://medium.com/@felipe.odorcyk/scrapping-data-from-pubmed-database-78a9b53de8ca
 
 1. Run 'pubmed_test.py'.
-2. Copy data from 'pubmed_result.xlsx' to 'DBLPpub_post_processed_pubmedadd.xlsx/database', and sort Affiliation AtoZ (!IMPORTANT!).
+2. Copy data from 'pubmed_result.xlsx' to 'DBLPpub_post_processed_pubmedadd.xlsx/database', and sort name AtoZ (!IMPORTANT!).
