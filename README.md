@@ -23,7 +23,7 @@ For German Database
 9. Check if 'DBLPpub_post_processed.xlsx/Institution Summary' shows every institutions (check the last institution).
 - - -
 For MIRMI Database
-1. Write PI names and affiliations into 'PIlist_MIRMI.xlsx' !!Because of DBLP's strange searching mechanism, some names are not properly works. Please refer 'PIsearching key.xlsx'
+1. Write PI names and affiliations into 'PIlist_MIRMI.xlsx' !!Because of DBLP's strange searching mechanism, some names are not properly work. Please refer 'PIsearching key.xlsx'
 2. Run 'mirmi.py'
 3. Copy the raw data 'publications.xlsx' to 'DBLPpub_post_processed_MIRMI.xlsx/database'.
 4. Run 'scholar.py' (this is only for Nature & Science papers) *Sience Robotics is crawled by 'mirmi.py'
