@@ -7,6 +7,7 @@ Install requirements
 1. pandas
 2. openpyxl
 3. xlsxwriter
+4. biopython
 
 !CAUTION!
 DBLP and Google Scholar does not shows every publications.
