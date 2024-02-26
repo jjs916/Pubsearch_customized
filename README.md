@@ -13,7 +13,7 @@ DBLP and Google Scholar does not shows every publications.
 It only shows CS related publications.
 - - -
 For German Database
-1. Write PI names and affiliations into 'PIlist.xlsx' !!Because of DBLP's strange searching mechanism, some names are not properly works. Please refer 'PIsearching key.xlsx'
+1. Write PI names and affiliations into 'PIlist.xlsx' !!Because of DBLP's strange searching mechanism, some names are not properly work. Please refer 'PIsearching key.xlsx'
 3. Run 'pubsearch.py'
 4. Copy the raw data 'publications.xlsx' to 'DBLPpub_post_processed.xlsx/database'.
 5. Copy PI infos to 'DBLPpub_post_processed.xlsx/Affiliation', and sort Affiliation AtoZ (!IMPORTANT!).
