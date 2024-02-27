@@ -37,5 +37,7 @@ For MIRMI Database
 For pubmed: Not completed: duplication issues, journal title choosing issues
 https://medium.com/@felipe.odorcyk/scrapping-data-from-pubmed-database-78a9b53de8ca
 
+ToDo: Solve duplication problems
+
 1. Run 'pubmed_test.py'.
 2. Copy data from 'pubmed_result.xlsx' to 'DBLPpub_post_processed_pubmedadd.xlsx/database', and sort name AtoZ (!IMPORTANT!).
