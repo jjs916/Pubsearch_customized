@@ -16,12 +16,13 @@ target_journals = [#IMPORTANT: Every Publication titles that needed to be check 
 ]
 
 university_list = [#IMPORTANT: Every Institutions that needed to be check should be in this list!
-    'BHT Berlin', 'Constructor Uni Bremen', 'DFKI', 'DLR', 'FAU Erlangen', 'Fraunhofer',
+    'BHT Berlin', 'Constructor Uni Bremen', 'DLR', 'FAU Erlangen', 'Fraunhofer',
     'FU Berlin', 'HU Berlin', 'KIT', 'LMU', 'LU Hannover', 'MPI', 'RWTH Aachen', 'TU Berlin',
     'TU Braunschweig', 'TU Chemnitz', 'TU Darmstadt', 'TU Dortmund', 'TU Dresden', 'TU Ilmenau',
     'TU Kaiserslautern', 'TUM', 'Uni Augsburg', 'Uni Bamberg', 'Uni Bayreuth', 'Uni Bielefeld',
     'Uni Bonn', 'Uni Bremen', 'Uni Freiburg', 'Uni Hamburg', 'Uni Heidelberg', 'Uni Magdeburg',
-    'Uni Stuttgart', 'Uni Tübingen', 'UTN'
+    'Uni Stuttgart', 'Uni Tübingen', 'Universität der Künste Berlin', 'Universitätsklinikums Hamburg-Eppendorf', 'University of Oldenburg',
+    'University of Osnabrück', 'UTN'
 ]
 
 
