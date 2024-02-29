@@ -18,7 +18,7 @@ For German Database
 3. Run 'pubsearch.py'
 4. Copy the raw data 'publications.xlsx' to 'DBLPpub_post_processed.xlsx/database', and sort name AtoZ (!IMPORTANT!).
 5. Copy PI infos to 'DBLPpub_post_processed.xlsx/Affiliation', and sort Affiliation AtoZ (!IMPORTANT!).
-6. Run 'duplication.py'
+6. Run 'duplication.py' #IMPORTANT: Every Institutions that needed to be check should be in script! #IMPORTANT: Every Publication titles that needed to be check should be in script!
 7. Copy the data of 'duplication.xlsx' to 'DBLPpub_post_processed.xlsx/Duplication check'. 
 8. Refresh 'DBLPpub_post_processed.xlsx/PI Summary' (Drag A5~U5 and copy-drag(?) the functions enough until every PIs listed + Set year range)
 9. Check if 'DBLPpub_post_processed.xlsx/Institution Summary' shows every institutions (check the last institution).
