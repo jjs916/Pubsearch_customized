@@ -1,12 +1,12 @@
 import pandas as pd
 from collections import Counter
 
-# 파일 불러오기
+# Bring File
 file_path = 'DBLPpub_post_processed.xlsx'
 sheet_name = 'database'
 data = pd.read_excel(file_path, sheet_name=sheet_name)
 
-# 연도 범위와 특정 학술지들의 목록 설정
+# Set year range and target publication titles
 year_range = range(2019, 2024)
 target_journals = [#IMPORTANT: Every Publication titles that needed to be check should be in this list!
     'ICRA', 'IROS', 'IEEE Robotics Autom. Lett.', 'IEEE Trans. Robotics',
@@ -26,31 +26,30 @@ university_list = [#IMPORTANT: Every Institutions that needed to be check should
 ]
 
 
-# 특정 조건에 맞는 행 선택
+# Select second and third column
 selected_rows = data[
     (data.iloc[:, 1].isin(year_range)) &
     (data.iloc[:, 2].isin(target_journals))
 ]
 
-# 중복된 행 찾기
-duplicated_indices = selected_rows[selected_rows.duplicated(subset=selected_rows.columns[3], keep=False)].index
+# Find duplicated titles
+duplicated_indices = selected_rows[selected_rows.duplicated(subset=[selected_rows.columns[3], selected_rows.columns[4]], keep=False)].index
 duplicated_rows = selected_rows.loc[duplicated_indices].sort_values(by=selected_rows.columns[3])
+
 
 # print(selected_rows.duplicated(subset=selected_rows.columns[3], keep=False))
 
-# 중복된 행의 4번째 열 값이 같은 행들끼리 그룹화하여 처리
 grouped = duplicated_rows.groupby(duplicated_rows.columns[3])
 
-# 각 그룹에서 5번째 열 값의 빈도수를 셈
+# Count Affiliation
 result = {}
 for name, group in grouped:
     university_counts = Counter(group.iloc[:, 4])
     result[name] = university_counts
 
-# 테이블 초기화
 university_journal_table = pd.DataFrame(0, index=university_list, columns=target_journals)
 
-# 그룹의 3번째 열이 열과 일치하고, count가 2 이상인 경우에만 값을 할당
+#Count duplicated numbers
 for name, frequencies in result.items():
     for university, count in frequencies.items():
         group_with_university = grouped.get_group(name)
